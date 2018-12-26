@@ -2,6 +2,7 @@
 
 import { put, takeEvery, delay, call } from 'redux-saga/effects'
 import api from '../services/shici'
+
 export function* incrementAsync() {
   yield delay(1000)
 
