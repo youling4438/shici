@@ -1,11 +1,14 @@
-export default function counter(state = 0, action) {
+const intlState = {
+  'shici': 'loading...'
+}
+
+export default function counter(state = intlState, action) {
   switch (action.type) {
-    case 'INCREMENT':
-      return state + 1
-    case 'INCREMENT_IF_ODD':
-      return (state % 2 !== 0) ? state + 1 : state
-    case 'DECREMENT':
-      return state - 1
+    case 'CHANGE_SHICI_RESP':
+      const { shici } = action;
+      return {
+        shici
+      }
     default:
       return state
   }
