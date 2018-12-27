@@ -9,7 +9,7 @@
 # configuration
 ./package-lock.json
 ./.yo-rc.json
-
+package-lock.json
 # production
 /build
 

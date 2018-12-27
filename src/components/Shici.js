@@ -1,16 +1,16 @@
 import * as React from 'react'
 import PropTypes from 'prop-types'
 
-const Shici = ({ shici, onIncrementAsync }) => (
+const Shici = ({ shici, changeShici }) => (
     <p>
         <div>{shici}</div>
-        <button onClick={onIncrementAsync}>change shici</button>
+        <button onClick={changeShici}>change shici</button>
     </p>
 )
 
 Shici.propTypes = {
     shici: PropTypes.string.isRequired,
-    onIncrementAsync: PropTypes.func.isRequired,
+    changeShici: PropTypes.func.isRequired,
 }
 
 export default Shici
