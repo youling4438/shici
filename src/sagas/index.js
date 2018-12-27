@@ -3,10 +3,14 @@
 import { put, takeEvery, delay, call } from 'redux-saga/effects'
 import api from '../services/shici'
 
+function getShici() {
+  return api.change().then((resp) => resp.json())
+}
+
 export function* changeShici() {
   const shici = '纵使晴明无雨色，入云深处亦沾衣'
   try {
-    const data = yield call(api.change);
+    const data = yield call(getShici);
     console.log('data :', data);
     yield put({ type: 'CHANGE_SHICI_RESP', data });
   } catch (error) {
