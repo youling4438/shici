@@ -8,6 +8,7 @@ import Shici from './components/Shici'
 import Header from './components/Header'
 import reducer from './reducers'
 import rootSaga from './sagas'
+import './styles/global-styles'
 
 const sagaMiddleware = createSagaMiddleware()
 const store = createStore(reducer, applyMiddleware(sagaMiddleware))
