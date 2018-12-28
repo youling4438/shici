@@ -24,7 +24,7 @@ const Shici = ({ shici, changeShici }) => (
     <p>
         <Intro>{shici}</Intro>
         <ChangeShici>
-            <a className={'changeButton'} onClick={changeShici}>change shici</a>
+            <a className={'changeButton'} onClick={changeShici}>切换诗词</a>
         </ChangeShici>
     </p>
 )
