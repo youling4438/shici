@@ -5,6 +5,7 @@ import ReactDOM from 'react-dom'
 import { createStore, applyMiddleware } from 'redux'
 import createSagaMiddleware from 'redux-saga'
 import Shici from './components/Shici'
+import Header from './components/Header'
 import reducer from './reducers'
 import rootSaga from './sagas'
 
@@ -16,10 +17,13 @@ const action = type => store.dispatch({ type })
 
 function render() {
   ReactDOM.render(
-    <Shici
-      shici={store.getState().shici}
-      changeShici={() => action('CHANGE_SHICI')}
-    />,
+    <div>
+      <Header />
+      <Shici
+        shici={store.getState().shici}
+        changeShici={() => action('CHANGE_SHICI')}
+      />
+    </div>,
     document.getElementById('root'),
   )
 }

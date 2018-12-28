@@ -16,6 +16,10 @@ module.exports = {
         test: /\.js$/,
         use: ['babel-loader'],
       },
+      {
+        test: /\.svg$/,
+        use: ['file-loader'],
+      },
     ],
   },
   devServer: {

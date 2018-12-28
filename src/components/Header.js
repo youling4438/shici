@@ -1,6 +1,6 @@
 import React from 'react'
-import logo from 'assets/logo.svg'
 import styled, { keyframes } from 'styled-components'
+import logo from '../assets/logo.svg'
 
 const rotate360 = keyframes`
   from {
@@ -18,7 +18,8 @@ const TopBar = styled.div`
   height: 150px;
   padding: 20px;
   color: #fff;
-
+  text-align: center;
+  
   .redux-logo {
     animation: ${rotate360} infinite 20s linear;
     height: 80px;
