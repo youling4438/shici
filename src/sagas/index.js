@@ -13,7 +13,8 @@ export function* changeShici() {
   const defaultShici = '纵使晴明无雨色，入云深处亦沾衣'
   try {
     const data = yield call(getShici);
-    const { content: shici } = JSON.parse(data);
+    const shiciData = JSON.parse(data);
+    const { content: shici } = shiciData;
     console.log('shici :', shici);
     yield put({ type: 'CHANGE_SHICI_RESP', shici });
   } catch (error) {
