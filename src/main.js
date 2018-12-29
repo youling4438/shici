@@ -21,7 +21,7 @@ function render() {
     <div>
       <Header />
       <Shici
-        shici={store.getState().shici}
+        shiciData={store.getState().shiciData}
         changeShici={() => action('CHANGE_SHICI')}
       />
     </div>,

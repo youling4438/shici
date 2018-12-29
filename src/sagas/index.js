@@ -12,9 +12,8 @@ export function* changeShici() {
   try {
     const data = yield call(getShici);
     const shiciData = JSON.parse(data);
-    const { content: shici } = shiciData;
-    console.log('shici :', shici);
-    yield put({ type: 'CHANGE_SHICI_RESP', shici });
+    console.log('shiciData :', shiciData);
+    yield put({ type: 'CHANGE_SHICI_RESP', shiciData });
   } catch (error) {
     yield put({ type: 'CHANGE_SHICI_RESP', defaultShici });
   }
