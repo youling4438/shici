@@ -1,12 +1,10 @@
 /* eslint-disable no-constant-condition */
 
-import { put, takeEvery, delay, call } from 'redux-saga/effects'
+import { put, takeEvery, call } from 'redux-saga/effects'
 import api from '../services/shici'
 
 function getShici() {
-  return api.change().then((resp) => {
-    return resp;
-  })
+  return api.change().then(resp => resp)
 }
 
 export function* changeShici() {
