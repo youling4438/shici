@@ -1,7 +1,6 @@
 import * as React from 'react'
-import PropTypes from 'prop-types'
 import styled from 'styled-components'
-import '../styles/shici-style'
+import { Headerstyle } from '../styles/shici-style'
 
 const Intro = styled.p`
     font-family: "Open Sans", "Helvetica Neue", Helvetica, Arial, sans-serif;
@@ -32,21 +31,19 @@ const ChangeShici = styled.div`
 const Shici = ({ shiciData, changeShici }) => {
     const { content, author, origin, category } = shiciData;
     return (
-        <p className={'container'}>
-            <Intro>
-                {content}
-                <div className={'from'} >------{author} {origin} </div>
-            </Intro>
-            <ChangeShici>
-                <a className={'changeButton'} onClick={changeShici}>切换诗词</a>
-            </ChangeShici>
-        </p>
+        <div>
+            <Headerstyle />
+            <p className={'container'}>
+                <Intro>
+                    {content}
+                    <div className={'from'} >------{author} {origin} </div>
+                </Intro>
+                <ChangeShici>
+                    <a className={'changeButton'} onClick={changeShici}>切换诗词</a>
+                </ChangeShici>
+            </p>
+        </div>
     );
-}
-
-Shici.propTypes = {
-    shiciData: PropTypes.object.isRequired,
-    changeShici: PropTypes.func.isRequired,
 }
 
 export default Shici
