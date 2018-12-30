@@ -1,20 +1,17 @@
 import React from 'react'
-import { CounterContainer, ShiciContainer } from 'containers'
-import { Header } from 'components'
-import { BrowserRouter as Router, Route } from 'react-router-dom'
-import styled from 'styled-components'
-
-const Container = styled.div`text-align: center;`
+import { Router, Route } from 'react-router-dom'
+import history from '../history';
+import { ShiciContainer, PageNavContainer } from '../containers'
+import { Header } from '../components/'
 
 function Routes() {
     return (
-        <Router>
-            <Container>
+        <Router history={history}>
+            <div>
                 <Header />
                 <Route path="/shici" component={ShiciContainer} />
-                <Header />
-                <Route path="/counter" component={CounterContainer} />
-            </Container>
+                <PageNavContainer />
+            </div>
         </Router>
     )
 }
