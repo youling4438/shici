@@ -11,6 +11,7 @@ function Routes() {
                 <Header />
                 <Route path="/shici" component={ShiciContainer} />
                 <PageNavContainer />
+                <Header />
             </div>
         </Router>
     )
