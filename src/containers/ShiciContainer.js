@@ -12,12 +12,10 @@ class ShiciContainer extends React.Component {
         this.changeShici = this.changeShici.bind(this)
     }
     changeShici() {
-        console.log('changeShici -------------------------');
         this.props.changeShici()
     }
     render() {
         const { shiciData } = this.props;
-        console.log('-----containter render------', this.props);
         return (
             <Shici
                 shiciData={shiciData}
