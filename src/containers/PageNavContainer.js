@@ -11,9 +11,9 @@ class PageNavContainer extends React.Component {
         super(props);
         this.bottonClickHandle = this.bottonClickHandle.bind(this)
     }
-    bottonClickHandle() {
+    bottonClickHandle(router) {
         console.log('changeRouter -------------------------');
-        this.props.changeRouter()
+        this.props.changeRouter(router)
     }
     render() {
         return (

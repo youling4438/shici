@@ -1,5 +1,5 @@
 import history from '../history';
 
-export const changeRouter = () => {
-    history.push('/shici');
+export const changeRouter = (router) => {
+    history.push(`/${router}`);
 }
