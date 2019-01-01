@@ -1,7 +1,7 @@
 import React from 'react'
 import { Router, Route } from 'react-router-dom'
 import history from '../history';
-import { ShiciContainer, PageNavContainer } from '../containers'
+import { ShiciContainer, PageNavContainer, HitokotoContainer } from '../containers'
 import { Header } from '../components/'
 
 function Routes() {
@@ -10,6 +10,7 @@ function Routes() {
             <div>
                 <Header />
                 <Route path="/shici" component={ShiciContainer} />
+                <Route path="/hitokoto" component={HitokotoContainer} />
                 <PageNavContainer />
                 <Header />
             </div>
