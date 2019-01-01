@@ -5,7 +5,11 @@ const HtmlWebpackPlugin = require('html-webpack-plugin')
 module.exports = {
   mode: 'development',
   entry: path.resolve(__dirname, 'src/main.js'),
-  devtool: 'eval-source-map',
+  output: {
+    path: __dirname + "/build",
+    filename: "bundle-[hash].js"
+  },
+  // devtool: 'eval-source-map',
   plugins: [
     new webpack.HotModuleReplacementPlugin(),
     new HtmlWebpackPlugin({ template: path.resolve(__dirname, 'index.html') }),
