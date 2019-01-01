@@ -1,6 +1,8 @@
 /* eslint-disable no-constant-condition */
 
 import { put, takeEvery, call } from 'redux-saga/effects'
+import { CHANGE_SHICI_RESP, CHANGE_SHICI } from '../actions/Shici'
+import { CHANGE_WORD_RESP, CHANGE_WORD } from '../actions/Hitokoto'
 import shiciApi from '../services/shici'
 import hitokotoApi from '../services/hitokoto'
 
@@ -18,9 +20,9 @@ export function* changeShici() {
     const data = yield call(getShici);
     const shiciData = JSON.parse(data);
     console.log('shiciData :', shiciData);
-    yield put({ type: 'CHANGE_SHICI_RESP', shiciData });
+    yield put({ type: CHANGE_SHICI_RESP, shiciData });
   } catch (error) {
-    yield put({ type: 'CHANGE_SHICI_RESP', defaultShici });
+    yield put({ type: CHANGE_SHICI_RESP, defaultShici });
   }
 }
 
@@ -30,13 +32,13 @@ export function* changeWord() {
     const data = yield call(gethitokoto);
     const hitokotoData = JSON.parse(data);
     console.log('hitokotoData :', hitokotoData);
-    yield put({ type: 'CHANGE_WORD_RESP', hitokotoData });
+    yield put({ type: CHANGE_WORD_RESP, hitokotoData });
   } catch (error) {
-    yield put({ type: 'CHANGE_WORD_RESP', defaultShici });
+    yield put({ type: CHANGE_WORD_RESP, defaultShici });
   }
 }
 
 export default function* rootSaga() {
-  yield takeEvery('CHANGE_SHICI', changeShici)
-  yield takeEvery('CHANGE_WORD', changeWord)
+  yield takeEvery(CHANGE_SHICI, changeShici)
+  yield takeEvery(CHANGE_WORD, changeWord)
 }
