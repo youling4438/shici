@@ -1,3 +1,5 @@
+import { CHANGE_SHICI_RESP } from '../actions/Shici'
+import { CHANGE_WORD_RESP } from '../actions/Hitokoto'
 const shiciData = {
   'content': '爆竹声中一岁除，春风送暖入屠苏。',
   'origin': '元日',
@@ -24,7 +26,7 @@ const intlState = {
 
 export default function counter(state = intlState, action) {
   switch (action.type) {
-    case 'CHANGE_SHICI_RESP':
+    case CHANGE_SHICI_RESP:
       const { shiciData } = action;
       const { allShiciList } = state;
       allShiciList.push(shiciData);
@@ -34,7 +36,7 @@ export default function counter(state = intlState, action) {
         shiciData,
         allShiciList
       }
-    case 'CHANGE_WORD_RESP':
+    case CHANGE_WORD_RESP:
       const { hitokotoData } = action;
       const { allHitokotoList } = state;
       allHitokotoList.push(hitokotoData);
