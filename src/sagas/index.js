@@ -1,10 +1,15 @@
 /* eslint-disable no-constant-condition */
 
 import { put, takeEvery, call } from 'redux-saga/effects'
-import api from '../services/shici'
+import shiciApi from '../services/shici'
+import hitokotoApi from '../services/hitokoto'
 
 function getShici() {
-  return api.change().then(resp => resp)
+  return shiciApi.get().then(resp => resp)
+}
+
+function gethitokoto() {
+  return hitokotoApi.get().then(resp => resp)
 }
 
 export function* changeShici() {
@@ -19,6 +24,19 @@ export function* changeShici() {
   }
 }
 
+export function* changeWord() {
+  const defaultShici = '纵使晴明无雨色，入云深处亦沾衣'
+  try {
+    const data = yield call(gethitokoto);
+    const hitokotoData = JSON.parse(data);
+    console.log('hitokotoData :', hitokotoData);
+    yield put({ type: 'CHANGE_WORD_RESP', hitokotoData });
+  } catch (error) {
+    yield put({ type: 'CHANGE_WORD_RESP', defaultShici });
+  }
+}
+
 export default function* rootSaga() {
   yield takeEvery('CHANGE_SHICI', changeShici)
+  yield takeEvery('CHANGE_WORD', changeWord)
 }

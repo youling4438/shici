@@ -4,10 +4,22 @@ const shiciData = {
   'author': '王安石',
   'category': '古诗文-节日-春节'
 };
+
+const hitokotoData = {
+  'id': 301,
+  'hitokoto': '既不回头，何必不忘；既然无缘，何必誓言；今日种种，似水无痕。',
+  'type': 'c',
+  'from': '仙剑奇侠传',
+  'creator': 'Sai',
+  'created_at': '1468948796'
+};
+
 const intlState = {
   'shici': '纵使晴明无雨色，入云深处亦沾衣',
   'shiciData': shiciData,
-  'allShiciList': [shiciData]
+  'hitokotoData': hitokotoData,
+  'allShiciList': [shiciData],
+  'allHitokotoList': [hitokotoData],
 }
 
 export default function counter(state = intlState, action) {
@@ -21,6 +33,16 @@ export default function counter(state = intlState, action) {
         ...state,
         shiciData,
         allShiciList
+      }
+    case 'CHANGE_WORD_RESP':
+      const { hitokotoData } = action;
+      const { allHitokotoList } = state;
+      allHitokotoList.push(hitokotoData);
+      console.table(allHitokotoList);
+      return {
+        ...state,
+        hitokotoData,
+        allHitokotoList
       }
     default:
       return state
