@@ -1,6 +1,6 @@
 import * as React from 'react'
 import styled from 'styled-components'
-import { Headerstyle } from '../styles/shici-style'
+import { Containerstyle } from '../styles/global-styles'
 
 const Intro = styled.p`
     font-family: "Open Sans", "Helvetica Neue", Helvetica, Arial, sans-serif;
@@ -11,7 +11,7 @@ const Intro = styled.p`
             font-size: 14px;
         }
     `
-const ChangeShici = styled.div`
+const ChangeButton = styled.div`
   font-family: "Open Sans", "Helvetica Neue", Helvetica, Arial, sans-serif;
   font-size: 20px;
   text-align: center;
@@ -32,15 +32,15 @@ const Shici = ({ shiciData, changeShici }) => {
     const { content, author, origin, category } = shiciData;
     return (
         <div>
-            <Headerstyle />
+            <Containerstyle />
             <p className={'container'}>
                 <Intro>
                     {content}
                     <div className={'from'} >------{author} {origin} </div>
                 </Intro>
-                <ChangeShici>
+                <ChangeButton>
                     <a className={'changeButton'} onClick={changeShici}>切换诗词</a>
-                </ChangeShici>
+                </ChangeButton>
             </p>
         </div>
     );
