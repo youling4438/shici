@@ -14,12 +14,12 @@ const rotate360 = keyframes`
 `
 
 const TopBar = styled.div`
-  background-color: #222;
+  background-color: #5c9291;
   height: 150px;
   padding: 20px;
   color: #fff;
   text-align: center;
-  
+
   .redux-logo {
     animation: ${rotate360} infinite 20s linear;
     height: 80px;

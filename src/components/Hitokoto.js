@@ -7,8 +7,11 @@ const Intro = styled.p`
     font-size: 40px;
     text-align: center;
         .from{
+            margin-top: 20px;
             text-align: center;
-            font-size: 14px;
+            font-size: 20px;
+            font-weight: bold;
+            color: #5c9291;
         }
     `
 const ChangeButton = styled.div`
