@@ -12,7 +12,6 @@ function Routes() {
                 <Route path="/shici" component={ShiciContainer} />
                 <Route path="/hitokoto" component={HitokotoContainer} />
                 <PageNavContainer />
-                <Header />
             </div>
         </Router>
     )
