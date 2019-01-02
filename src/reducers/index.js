@@ -24,7 +24,7 @@ const intlState = {
   'allHitokotoList': [hitokotoData],
 }
 
-export default function counter(state = intlState, action) {
+export default function shici(state = intlState, action) {
   switch (action.type) {
     case CHANGE_SHICI_RESP:
       const { shiciData } = action;
