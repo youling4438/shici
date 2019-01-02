@@ -10,9 +10,13 @@ class ShiciContainer extends React.Component {
     constructor(props) {
         super(props);
         this.changeShici = this.changeShici.bind(this)
+        this.collectShici = this.collectShici.bind(this)
     }
     changeShici() {
         this.props.changeShici()
+    }
+    collectShici(index) {
+        this.props.collectShici(index)
     }
     render() {
         const { shiciData } = this.props;
@@ -20,6 +24,7 @@ class ShiciContainer extends React.Component {
             <Shici
                 shiciData={shiciData}
                 changeShici={this.changeShici}
+                collectShici={this.collectShici}
             />
         )
     }
