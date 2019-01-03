@@ -9,7 +9,7 @@ module.exports = {
     path: __dirname + "/build",
     filename: "bundle-[hash].js"
   },
-  // devtool: 'eval-source-map',
+  devtool: 'eval-source-map',
   plugins: [
     new webpack.HotModuleReplacementPlugin(),
     new HtmlWebpackPlugin({ template: path.resolve(__dirname, 'index.html') }),
