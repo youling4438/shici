@@ -9,17 +9,22 @@ import * as hitokotoAction from '../actions/Hitokoto'
 class HitokotoContainer extends React.Component {
     constructor(props) {
         super(props);
-        this.changeWord = this.changeWord.bind(this)
+        this.changeHitokoto = this.changeHitokoto.bind(this)
+        this.collectHitokoto = this.collectHitokoto.bind(this)
     }
-    changeWord() {
-        this.props.changeWord()
+    changeHitokoto() {
+        this.props.changeHitokoto()
+    }
+    collectHitokoto(index) {
+        this.props.collectHitokoto(index)
     }
     render() {
         const { hitokotoData } = this.props;
         return (
             <Hitokoto
                 hitokotoData={hitokotoData}
-                changeWord={this.changeWord}
+                changeHitokoto={this.changeHitokoto}
+                collectHitokoto={this.collectHitokoto}
             />
         )
     }

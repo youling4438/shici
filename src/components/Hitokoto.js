@@ -1,6 +1,7 @@
 import * as React from 'react'
 import styled from 'styled-components'
 import { Containerstyle } from '../styles/global-styles'
+import collectedIcon from '../assets/collected.svg'
 
 const Intro = styled.p`
     font-family: "Open Sans", "Helvetica Neue", Helvetica, Arial, sans-serif;
@@ -12,6 +13,18 @@ const Intro = styled.p`
             font-size: 20px;
             font-weight: bold;
             color: #5c9291;
+            .collect, .collected{
+                float: right;
+                cursor: pointer;
+                filter: brightness(0);
+                img{
+                    padding: 5px 10px;
+                    width: 25px;
+                }
+            }
+            .collect:hover, span.collected{
+                filter: brightness(1);
+            }
         }
     `
 const ChangeButton = styled.div`
@@ -31,19 +44,24 @@ const ChangeButton = styled.div`
   }
 `
 
-const Hitokoto = ({ hitokotoData, changeWord }) => {
+const Hitokoto = ({ hitokotoData, changeHitokoto, collectHitokoto }) => {
     console.log('hitokotoData: ', hitokotoData);
-    const { hitokoto, from, creator, id, created_at, type } = hitokotoData;
+    const { hitokoto, from, creator, id, created_at, type, collect, orderNumber } = hitokotoData;
+    const collectHitokotoHandle = () =>{
+        collectHitokoto(orderNumber);
+    }
     return (
         <div>
             <Containerstyle />
             <p className={'container'}>
                 <Intro>
                     {hitokoto}
-                    <div className={'from'} >------{creator} {from} </div>
+                    <div className={'from'} >------{creator} {from}
+                        <span className={collect ? 'collected' : 'collect'} onClick={collectHitokotoHandle} ><img src={collectedIcon} /></span>
+                    </div>
                 </Intro>
                 <ChangeButton>
-                    <a className={'changeButton'} onClick={changeWord}>切换一言</a>
+                    <a className={'changeButton'} onClick={changeHitokoto}>切换一言</a>
                 </ChangeButton>
             </p>
         </div>
