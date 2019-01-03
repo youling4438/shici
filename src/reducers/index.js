@@ -1,5 +1,5 @@
 import { CHANGE_SHICI_RESP, COLLECT_SHICI } from '../actions/Shici'
-import { CHANGE_WORD_RESP } from '../actions/Hitokoto'
+import { CHANGE_HITOKOTO_RESP, COLLECT_HITOKOTO } from '../actions/Hitokoto'
 const shiciData = {
     'content': '爆竹声中一岁除，春风送暖入屠苏。',
     'origin': '元日',
@@ -16,7 +16,8 @@ const hitokotoData = {
     'from': '仙剑奇侠传',
     'creator': 'Sai',
     'created_at': '1468948796',
-    'collect': false
+    'collect': false,
+    'orderNumber': 0
 };
 
 const intlState = {
@@ -42,26 +43,38 @@ export default function shici(state = intlState, action) {
                 allShiciList
             }
         case COLLECT_SHICI:
-            const { index } = action;
+            const { index: shiciIndex } = action;
             const { allShiciList: allList, shiciData: shici } = state;
             shici.collect = !shici.collect;
-            allList[index] = shici;
+            allList[shiciIndex] = shici;
             console.table(allList);
             return {
                 ...state,
                 shiciData: shici,
                 allShiciList: allList
             }
-        case CHANGE_WORD_RESP:
+        case CHANGE_HITOKOTO_RESP:
             const { hitokotoData } = action;
             const { allHitokotoList } = state;
             hitokotoData['collect'] = false;
+            hitokotoData['orderNumber'] = allHitokotoList.length;
             allHitokotoList.push(hitokotoData);
             console.table(allHitokotoList);
             return {
                 ...state,
                 hitokotoData,
                 allHitokotoList
+            }
+        case COLLECT_HITOKOTO:
+            const { index: hitoIndex } = action;
+            const { allHitokotoList: allHitoList, hitokotoData: hitokoto } = state;
+            hitokoto.collect = !hitokoto.collect;
+            allHitoList[hitoIndex] = hitokoto;
+            console.table(allHitoList);
+            return {
+                ...state,
+                hitokotoData: hitokoto,
+                allHitokotoList: allHitoList
             }
         default:
             return state
