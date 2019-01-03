@@ -24,12 +24,6 @@ class PageNavContainer extends React.Component {
     }
 }
 
-// const mapStateToProps = createStructuredSelector({
-//     shiciData: createSelector(
-//         (state) => state.shiciData,
-//         (shiciState) => shiciState
-//     ),
-// })
 
 function mapDispatchToProps(dispatch) {
     return bindActionCreators(pageNavAction, dispatch)
