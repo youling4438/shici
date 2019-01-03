@@ -1,6 +1,12 @@
-export const CHANGE_WORD = 'CHANGE_WORD'
-export const CHANGE_WORD_RESP = 'CHANGE_WORD_RESP'
+export const CHANGE_HITOKOTO = 'CHANGE_HITOKOTO'
+export const CHANGE_HITOKOTO_RESP = 'CHANGE_HITOKOTO_RESP'
+export const COLLECT_HITOKOTO = 'COLLECT_HITOKOTO'
 
-export const changeWord = () => ({
-    'type': CHANGE_WORD
+export const changeHitokoto = () => ({
+    'type': CHANGE_HITOKOTO
+})
+
+export const collectHitokoto = (index) => ({
+    'type': COLLECT_HITOKOTO,
+    index
 })
