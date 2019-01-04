@@ -6,8 +6,11 @@ import {
 } from '../actions/Shici'
 import {
     CHANGE_HITOKOTO_RESP,
-    COLLECT_HITOKOTO
+    COLLECT_HITOKOTO,
+    PREV_HITOKOTO,
+    NEXT_HITOKOTO
 } from '../actions/Hitokoto'
+
 const shiciData = {
     'content': '爆竹声中一岁除，春风送暖入屠苏。',
     'origin': '元日',
@@ -97,6 +100,20 @@ export default function shici(state = intlState, action) {
                 ...state,
                 hitokotoData: hitokoto,
                 allHitokotoList: allHitoList
+            }
+        case PREV_HITOKOTO:
+            const { index: prevHitokotoIndex } = action;
+            const { allHitokotoList: hitokotoListPrev } = state;
+            return {
+                ...state,
+                hitokotoData: hitokotoListPrev[prevHitokotoIndex]
+            }
+        case NEXT_HITOKOTO:
+            const { index: nextHitokotoIndex } = action;
+            const { allHitokotoList: hitokotoListNext } = state;
+            return {
+                ...state,
+                hitokotoData: hitokotoListNext[nextHitokotoIndex]
             }
         default:
             return state
