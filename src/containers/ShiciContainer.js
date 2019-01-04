@@ -28,10 +28,12 @@ class ShiciContainer extends React.Component {
     }
     render() {
         const { shiciProps: { shiciData, allShiciList } } = this.props;
+        const { orderNumber } = shiciData;
         return (
             <Shici
                 shiciData={shiciData}
-                allShiciList={allShiciList}
+                showPrevButton={orderNumber > 0}
+                showNextButton={orderNumber < allShiciList.length - 1}
                 changeShici={this.changeShici}
                 collectShici={this.collectShici}
                 prevShici={this.prevShici}

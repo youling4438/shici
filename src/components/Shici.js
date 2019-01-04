@@ -47,7 +47,7 @@ const ChangeButton = styled.div`
   }
 `
 
-const Shici = ({ shiciData, allShiciList, changeShici, collectShici, prevShici, nextShici }) => {
+const Shici = ({ shiciData, showPrevButton, showNextButton, changeShici, collectShici, prevShici, nextShici }) => {
     const { content, author, origin, category, collect, orderNumber } = shiciData;
     const collectShiciHandle = () => {
         collectShici(orderNumber);
@@ -58,8 +58,6 @@ const Shici = ({ shiciData, allShiciList, changeShici, collectShici, prevShici, 
     const nextShiciHandle = () => {
         nextShici(orderNumber + 1);
     }
-    const showPrevButton = orderNumber > 0;
-    const showNextButton = orderNumber < allShiciList.length - 1;
     return (
         <div>
             <Containerstyle />
