@@ -12,6 +12,7 @@ class ShiciContainer extends React.Component {
         this.changeShici = this.changeShici.bind(this)
         this.collectShici = this.collectShici.bind(this)
         this.prevShici = this.prevShici.bind(this)
+        this.nextShici = this.nextShici.bind(this)
     }
     changeShici() {
         this.props.changeShici()
@@ -22,22 +23,27 @@ class ShiciContainer extends React.Component {
     prevShici(index) {
         this.props.prevShici(index)
     }
+    nextShici(index) {
+        this.props.nextShici(index)
+    }
     render() {
-        const { shiciData } = this.props;
+        const { shiciProps: { shiciData, allShiciList } } = this.props;
         return (
             <Shici
                 shiciData={shiciData}
+                allShiciList={allShiciList}
                 changeShici={this.changeShici}
                 collectShici={this.collectShici}
                 prevShici={this.prevShici}
+                nextShici={this.nextShici}
             />
         )
     }
 }
 
 const mapStateToProps = createStructuredSelector({
-    shiciData: createSelector(
-        (state) => state.shiciData,
+    shiciProps: createSelector(
+        (state) => ({ shiciData: state.shiciData, allShiciList: state.allShiciList }),
         (shiciState) => shiciState
     ),
 })

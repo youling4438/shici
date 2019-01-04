@@ -47,7 +47,7 @@ const ChangeButton = styled.div`
   }
 `
 
-const Shici = ({ shiciData, changeShici, collectShici, prevShici }) => {
+const Shici = ({ shiciData, allShiciList, changeShici, collectShici, prevShici, nextShici }) => {
     const { content, author, origin, category, collect, orderNumber } = shiciData;
     const collectShiciHandle = () => {
         collectShici(orderNumber);
@@ -55,7 +55,11 @@ const Shici = ({ shiciData, changeShici, collectShici, prevShici }) => {
     const prevShiciHandle = () => {
         prevShici(orderNumber - 1);
     }
+    const nextShiciHandle = () => {
+        nextShici(orderNumber + 1);
+    }
     const showPrevButton = orderNumber > 0;
+    const showNextButton = orderNumber < allShiciList.length - 1;
     return (
         <div>
             <Containerstyle />
@@ -69,7 +73,8 @@ const Shici = ({ shiciData, changeShici, collectShici, prevShici }) => {
                 </Intro>
                 <ChangeButton>
                     {showPrevButton && <a className={'changeButton'} onClick={prevShiciHandle}>上一句诗词</a>}
-                    <a className={'changeButton'} onClick={changeShici}>下一句诗词</a>
+                    <a className={'changeButton'} onClick={changeShici}>随机诗词</a>
+                    {showNextButton && <a className={'changeButton'} onClick={nextShiciHandle}>下一句诗词</a>}
                 </ChangeButton>
             </p>
         </div>

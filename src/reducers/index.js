@@ -1,7 +1,8 @@
 import {
     CHANGE_SHICI_RESP,
     COLLECT_SHICI,
-    PREV_SHICI
+    PREV_SHICI,
+    NEXT_SHICI
 } from '../actions/Shici'
 import {
     CHANGE_HITOKOTO_RESP,
@@ -62,10 +63,17 @@ export default function shici(state = intlState, action) {
             }
         case PREV_SHICI:
             const { index: prevShiciIndex } = action;
-            const { allShiciList: shiciList } = state;
+            const { allShiciList: shiciListPrev } = state;
             return {
                 ...state,
-                shiciData: shiciList[prevShiciIndex]
+                shiciData: shiciListPrev[prevShiciIndex]
+            }
+        case NEXT_SHICI:
+            const { index: nextShiciIndex } = action;
+            const { allShiciList: shiciListNext } = state;
+            return {
+                ...state,
+                shiciData: shiciListNext[nextShiciIndex]
             }
         case CHANGE_HITOKOTO_RESP:
             const { hitokotoData } = action;
