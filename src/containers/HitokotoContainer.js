@@ -11,6 +11,8 @@ class HitokotoContainer extends React.Component {
         super(props);
         this.changeHitokoto = this.changeHitokoto.bind(this)
         this.collectHitokoto = this.collectHitokoto.bind(this)
+        this.prevHitokoto = this.prevHitokoto.bind(this)
+        this.nextHitokoto = this.nextHitokoto.bind(this)
     }
     changeHitokoto() {
         this.props.changeHitokoto()
@@ -18,13 +20,24 @@ class HitokotoContainer extends React.Component {
     collectHitokoto(index) {
         this.props.collectHitokoto(index)
     }
+    prevHitokoto(index) {
+        this.props.prevHitokoto(index)
+    }
+    nextHitokoto(index) {
+        this.props.nextHitokoto(index)
+    }
     render() {
-        const { hitokotoProps: { hitokotoData } } = this.props;
+        const { hitokotoProps: { hitokotoData, allHitokotoList } } = this.props;
+        const { orderNumber } = hitokotoData;
         return (
             <Hitokoto
                 hitokotoData={hitokotoData}
+                showPrevButton={orderNumber > 0}
+                showNextButton={orderNumber < allHitokotoList.length - 1}
                 changeHitokoto={this.changeHitokoto}
                 collectHitokoto={this.collectHitokoto}
+                prevHitokoto={this.prevHitokoto}
+                nextHitokoto={this.nextHitokoto}
             />
         )
     }
