@@ -1,5 +1,12 @@
-import { CHANGE_SHICI_RESP, COLLECT_SHICI } from '../actions/Shici'
-import { CHANGE_HITOKOTO_RESP, COLLECT_HITOKOTO } from '../actions/Hitokoto'
+import {
+    CHANGE_SHICI_RESP,
+    COLLECT_SHICI,
+    PREV_SHICI
+} from '../actions/Shici'
+import {
+    CHANGE_HITOKOTO_RESP,
+    COLLECT_HITOKOTO
+} from '../actions/Hitokoto'
 const shiciData = {
     'content': '爆竹声中一岁除，春风送暖入屠苏。',
     'origin': '元日',
@@ -52,6 +59,13 @@ export default function shici(state = intlState, action) {
                 ...state,
                 shiciData: shici,
                 allShiciList: allList
+            }
+        case PREV_SHICI:
+            const { index: prevShiciIndex } = action;
+            const { allShiciList: shiciList } = state;
+            return {
+                ...state,
+                shiciData: shiciList[prevShiciIndex]
             }
         case CHANGE_HITOKOTO_RESP:
             const { hitokotoData } = action;

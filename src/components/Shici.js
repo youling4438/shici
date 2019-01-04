@@ -39,6 +39,7 @@ const ChangeButton = styled.div`
     cursor: pointer;
     color: #000;
     border-bottom: 1px dashed currentColor;
+    margin: 0 15px;
   }
 
   .changeButton:hover{
@@ -46,11 +47,15 @@ const ChangeButton = styled.div`
   }
 `
 
-const Shici = ({ shiciData, changeShici, collectShici }) => {
+const Shici = ({ shiciData, changeShici, collectShici, prevShici }) => {
     const { content, author, origin, category, collect, orderNumber } = shiciData;
-    const collectShiciHandle = () =>{
+    const collectShiciHandle = () => {
         collectShici(orderNumber);
     }
+    const prevShiciHandle = () => {
+        prevShici(orderNumber - 1);
+    }
+    const showPrevButton = orderNumber > 0;
     return (
         <div>
             <Containerstyle />
@@ -59,12 +64,12 @@ const Shici = ({ shiciData, changeShici, collectShici }) => {
                     {content}
                     <div className={'from'} >
                         ------{author} {origin}
-                        <span className={collect ? 'collected' : 'collect'} onClick={collectShiciHandle} ><img  src={ collectedIcon } /></span>
+                        <span className={collect ? 'collected' : 'collect'} onClick={collectShiciHandle} ><img src={collectedIcon} /></span>
                     </div>
-
                 </Intro>
                 <ChangeButton>
-                    <a className={'changeButton'} onClick={changeShici}>切换诗词</a>
+                    {showPrevButton && <a className={'changeButton'} onClick={prevShiciHandle}>上一句诗词</a>}
+                    <a className={'changeButton'} onClick={changeShici}>下一句诗词</a>
                 </ChangeButton>
             </p>
         </div>

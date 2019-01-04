@@ -47,7 +47,7 @@ const ChangeButton = styled.div`
 const Hitokoto = ({ hitokotoData, changeHitokoto, collectHitokoto }) => {
     console.log('hitokotoData: ', hitokotoData);
     const { hitokoto, from, creator, id, created_at, type, collect, orderNumber } = hitokotoData;
-    const collectHitokotoHandle = () =>{
+    const collectHitokotoHandle = () => {
         collectHitokoto(orderNumber);
     }
     return (
@@ -61,7 +61,7 @@ const Hitokoto = ({ hitokotoData, changeHitokoto, collectHitokoto }) => {
                     </div>
                 </Intro>
                 <ChangeButton>
-                    <a className={'changeButton'} onClick={changeHitokoto}>切换一言</a>
+                    <a className={'changeButton'} onClick={changeHitokoto}>下一句一言</a>
                 </ChangeButton>
             </p>
         </div>
