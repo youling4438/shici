@@ -19,7 +19,7 @@ class HitokotoContainer extends React.Component {
         this.props.collectHitokoto(index)
     }
     render() {
-        const { hitokotoData } = this.props;
+        const { hitokotoProps: { hitokotoData } } = this.props;
         return (
             <Hitokoto
                 hitokotoData={hitokotoData}
@@ -31,8 +31,8 @@ class HitokotoContainer extends React.Component {
 }
 
 const mapStateToProps = createStructuredSelector({
-    hitokotoData: createSelector(
-        (state) => state.hitokotoData,
+    hitokotoProps: createSelector(
+        (state) => ({ hitokotoData: state.hitokotoData, allHitokotoList: state.allHitokotoList }),
         (hitokotoState) => hitokotoState
     ),
 })
