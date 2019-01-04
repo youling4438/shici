@@ -37,6 +37,7 @@ const ChangeButton = styled.div`
     cursor:pointer;
     color: #000;
     border-bottom: 1px dashed currentColor;
+    margin: 0 15px;
   }
 
   .changeButton:hover{
@@ -44,11 +45,17 @@ const ChangeButton = styled.div`
   }
 `
 
-const Hitokoto = ({ hitokotoData, changeHitokoto, collectHitokoto }) => {
+const Hitokoto = ({ hitokotoData, showPrevButton, showNextButton, changeHitokoto, collectHitokoto, prevHitokoto, nextHitokoto }) => {
     console.log('hitokotoData: ', hitokotoData);
     const { hitokoto, from, creator, id, created_at, type, collect, orderNumber } = hitokotoData;
     const collectHitokotoHandle = () => {
         collectHitokoto(orderNumber);
+    }
+    const prevHitokotoHandle = () => {
+        prevHitokoto(orderNumber - 1);
+    }
+    const nextHitokotoHandle = () => {
+        nextHitokoto(orderNumber + 1);
     }
     return (
         <div>
@@ -61,7 +68,9 @@ const Hitokoto = ({ hitokotoData, changeHitokoto, collectHitokoto }) => {
                     </div>
                 </Intro>
                 <ChangeButton>
-                    <a className={'changeButton'} onClick={changeHitokoto}>下一句一言</a>
+                    {showPrevButton && <a className={'changeButton'} onClick={prevHitokotoHandle}>上一条一言</a>}
+                    <a className={'changeButton'} onClick={changeHitokoto}>随机一言</a>
+                    {showNextButton && <a className={'changeButton'} onClick={nextHitokotoHandle}>下一条一言</a>}
                 </ChangeButton>
             </p>
         </div>
