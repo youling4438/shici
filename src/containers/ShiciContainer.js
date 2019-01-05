@@ -1,7 +1,5 @@
 import React from 'react'
 import { Shici } from '../components/'
-import { createStructuredSelector, createSelector } from 'reselect'
-
 import { bindActionCreators } from 'redux'
 import { connect } from 'react-redux'
 import * as shiciAction from '../actions/Shici'
@@ -27,7 +25,7 @@ class ShiciContainer extends React.Component {
         this.props.nextShici(index)
     }
     render() {
-        const { shiciProps: { shiciData, allShiciList } } = this.props;
+        const { shiciData, allShiciList } = this.props;
         const { orderNumber } = shiciData;
         return (
             <Shici
@@ -43,12 +41,7 @@ class ShiciContainer extends React.Component {
     }
 }
 
-const mapStateToProps = createStructuredSelector({
-    shiciProps: createSelector(
-        (state) => ({ shiciData: state.shiciData, allShiciList: state.allShiciList }),
-        (shiciState) => shiciState
-    ),
-})
+const mapStateToProps = state => state.Shici
 
 function mapDispatchToProps(dispatch) {
     return bindActionCreators(shiciAction, dispatch)

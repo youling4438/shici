@@ -1,7 +1,5 @@
 import React from 'react'
 import { Hitokoto } from '../components'
-import { createStructuredSelector, createSelector } from 'reselect'
-
 import { bindActionCreators } from 'redux'
 import { connect } from 'react-redux'
 import * as hitokotoAction from '../actions/Hitokoto'
@@ -27,7 +25,7 @@ class HitokotoContainer extends React.Component {
         this.props.nextHitokoto(index)
     }
     render() {
-        const { hitokotoProps: { hitokotoData, allHitokotoList } } = this.props;
+        const { hitokotoData, allHitokotoList } = this.props;
         const { orderNumber } = hitokotoData;
         return (
             <Hitokoto
@@ -43,12 +41,7 @@ class HitokotoContainer extends React.Component {
     }
 }
 
-const mapStateToProps = createStructuredSelector({
-    hitokotoProps: createSelector(
-        (state) => ({ hitokotoData: state.hitokotoData, allHitokotoList: state.allHitokotoList }),
-        (hitokotoState) => hitokotoState
-    ),
-})
+const mapStateToProps = state => state.Hitokoto
 
 function mapDispatchToProps(dispatch) {
     return bindActionCreators(hitokotoAction, dispatch)
