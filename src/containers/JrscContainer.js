@@ -1,8 +1,8 @@
 import React from 'react'
-import { Jrsc } from '../components/'
+import { Jrsc } from '../components'
 import { bindActionCreators } from 'redux'
 import { connect } from 'react-redux'
-import * as jrscAction from '../actions/Shici'
+import * as jrscAction from '../actions/Jrsc'
 
 class JrscContainer extends React.Component {
     constructor(props) {
@@ -25,17 +25,18 @@ class JrscContainer extends React.Component {
         this.props.nextShici(index)
     }
     render() {
-        // const { shiciData, allShiciList } = this.props;
-        // const { orderNumber } = shiciData;
+        const { jrshiciData } = this.props;
+        console.log('jrshiciData :', jrshiciData);
         return (
             <Jrsc
-
+                jrshiciData={jrshiciData}
+                changeJrShici={this.props.changeJrShici}
             />
         )
     }
 }
 
-const mapStateToProps = state => state
+const mapStateToProps = (state) => state.Jrsc
 
 function mapDispatchToProps(dispatch) {
     return bindActionCreators(jrscAction, dispatch)

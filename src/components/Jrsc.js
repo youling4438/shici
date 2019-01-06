@@ -1,38 +1,75 @@
 import React from 'react'
-import styled, { keyframes } from 'styled-components'
-import logo from '../assets/logo.svg'
+import styled from 'styled-components'
+import { Containerstyle } from '../styles/global-styles'
+import collectedIcon from '../assets/collected.svg'
 
-const rotate360 = keyframes`
-  from {
-    transform: rotate(0deg);
-    filter: hue-rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-    filter: hue-rotate(360deg);
-  }
+const Intro = styled.p`
+    font-family: "Open Sans", "Helvetica Neue", Helvetica, Arial, sans-serif;
+    font-size: 40px;
+    text-align: center;
+        .from{
+            margin-top: 20px;
+            text-align: center;
+            font-size: 20px;
+            font-weight: bold;
+            line-height: 35px;
+            color: #5c9291;
+            .collect, .collected{
+                float: right;
+                cursor: pointer;
+                filter: brightness(0);
+                img{
+                    padding: 5px 10px;
+                    width: 25px;
+                }
+            }
+            .collect:hover, span.collected{
+                filter: brightness(1);
+            }
+        }
+
+    `
+const ChangeButton = styled.div`
+    font-family: "Open Sans", "Helvetica Neue", Helvetica, Arial, sans-serif;
+    font-size: 20px;
+    text-align: center;
+    margin-bottom: 20px;
+
+    .changeButton{
+        cursor: pointer;
+        color: #000;
+        border-bottom: 1px dashed currentColor;
+        margin: 0 15px;
+    }
+
+    .changeButton:hover{
+        border-bottom-style: solid;
+    }
 `
 
-const TopBar = styled.div`
-  background-color: #5c9291;
-  height: 150px;
-  padding: 20px;
-  color: #fff;
-  text-align: center;
-  margin-top: 15px;
-
-  .redux-logo {
-    animation: ${rotate360} infinite 20s linear;
-    height: 80px;
-  }
-`
-
-function Jrsc() {
+function Jrsc({ jrshiciData, changeJrShici}) {
+    const { content, matchTags, origin, collect } = jrshiciData;
+    const { title, dynasty, author } = origin;
+    const matchTagsDom = matchTags.map((tag, index)=>{
+        return <span key={index}>{tag}</span>;
+    })
     return (
-        <TopBar>
-            <img src={logo} className="redux-logo" alt="logo" />
-            <h2>今日诗词</h2>
-        </TopBar>
+        <div>
+            <Containerstyle />
+            <p className={'container'}>
+                <Intro>
+                    {content}
+                    <div className={'from'} >
+                        ------{author} {dynasty} {title}
+                        <span className={collect ? 'collected' : 'collect'}><img src={collectedIcon} /></span>
+                    </div>
+                    {matchTagsDom}
+                </Intro>
+                <ChangeButton>
+                    <a className={'changeButton'} onClick={changeJrShici}>随机诗词</a>
+                </ChangeButton>
+            </p>
+        </div>
     )
 }
 
