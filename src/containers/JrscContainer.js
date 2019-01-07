@@ -7,16 +7,16 @@ import * as jrscAction from '../actions/Jrsc'
 class JrscContainer extends React.Component {
     constructor(props) {
         super(props);
-        this.changeShici = this.changeShici.bind(this)
-        this.collectShici = this.collectShici.bind(this)
+        this.changeJrShici = this.changeJrShici.bind(this)
+        this.collectJrShici = this.collectJrShici.bind(this)
         this.prevShici = this.prevShici.bind(this)
         this.nextShici = this.nextShici.bind(this)
     }
-    changeShici() {
-        this.props.changeShici()
+    changeJrShici() {
+        this.props.changeJrShici()
     }
-    collectShici(index) {
-        this.props.collectShici(index)
+    collectJrShici(index) {
+        this.props.collectJrShici(index)
     }
     prevShici(index) {
         this.props.prevShici(index)
@@ -29,7 +29,8 @@ class JrscContainer extends React.Component {
         return (
             <Jrsc
                 jrshiciData={jrshiciData}
-                changeJrShici={this.props.changeJrShici}
+                changeJrShici={this.changeJrShici}
+                collectJrShici={this.collectJrShici}
             />
         )
     }

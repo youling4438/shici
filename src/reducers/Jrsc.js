@@ -1,5 +1,6 @@
 import {
-    CHANGE_JR_SHICI_RESP
+    CHANGE_JR_SHICI_RESP,
+    COLLECT_JR_SHICI
 } from '../actions/Jrsc'
 
 const jrshiciData = {
@@ -33,11 +34,20 @@ export default function jrshici(state = intlState, action) {
             jrshiciData['collect'] = false;
             jrshiciData['orderNumber'] = allJrShiciList.length;
             allJrShiciList.push(jrshiciData);
-            console.table(allJrShiciList);
             return {
                 ...state,
                 jrshiciData,
                 allJrShiciList
+            }
+        case COLLECT_JR_SHICI:
+            const { index: jrshiciIndex } = action;
+            const { jrshiciData: jrshici, allJrShiciList: allJrShici } = state;
+            jrshici['collect'] = !jrshici['collect'];
+            allJrShici[jrshiciIndex] = jrshici;
+            return {
+                ...state,
+                jrshiciData: jrshici,
+                allJrShiciList: allJrShici
             }
         default:
             return state

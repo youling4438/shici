@@ -59,12 +59,15 @@ const Tag = styled.span`
 	}
 `
 
-function Jrsc({ jrshiciData, changeJrShici }) {
-	const { content, matchTags, origin, collect } = jrshiciData;
+function Jrsc({ jrshiciData, changeJrShici, collectJrShici }) {
+	const { content, matchTags, origin, collect, orderNumber } = jrshiciData;
 	const { title, dynasty, author } = origin;
 	const matchTagsDom = matchTags.map((tag, index) => {
 		return <Tag key={index}>{tag}</Tag>;
 	})
+	const collectJrShiciHandle = () => {
+		collectJrShici(orderNumber)
+	}
 	return (
 		<div>
 			<Containerstyle />
@@ -73,7 +76,7 @@ function Jrsc({ jrshiciData, changeJrShici }) {
 					{content}
 					<div className={'from'} >
 						------{author} {dynasty} {title}
-						<span className={collect ? 'collected' : 'collect'}><img src={collectedIcon} /></span>
+						<span className={collect ? 'collected' : 'collect'}><img src={collectedIcon} onClick={collectJrShiciHandle} /></span>
 					</div>
 					{matchTagsDom}
 				</Intro>
