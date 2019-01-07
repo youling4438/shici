@@ -26,7 +26,6 @@ class JrscContainer extends React.Component {
     }
     render() {
         const { jrshiciData } = this.props;
-        console.log('jrshiciData :', jrshiciData);
         return (
             <Jrsc
                 jrshiciData={jrshiciData}

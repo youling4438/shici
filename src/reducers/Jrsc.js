@@ -29,7 +29,6 @@ export default function jrshici(state = intlState, action) {
     switch (action.type) {
         case CHANGE_JR_SHICI_RESP:
             const { jrshiciData } = action;
-            console.log('jrshiciData :', jrshiciData);
             const { allJrShiciList } = state;
             jrshiciData['collect'] = false;
             jrshiciData['orderNumber'] = allJrShiciList.length;
