@@ -46,31 +46,43 @@ const ChangeButton = styled.div`
         border-bottom-style: solid;
     }
 `
+const Tag = styled.span`
+	font-size: 16px;
+	color: #5c9291;
+	margin: 0px 10px;
+	padding: 5px 15px;
+	border: 1px solid #5c9291;
+	border-radius: 15px;
+	:hover{
+		color: #fff;
+		background: #5c9291;
+	}
+`
 
-function Jrsc({ jrshiciData, changeJrShici}) {
-    const { content, matchTags, origin, collect } = jrshiciData;
-    const { title, dynasty, author } = origin;
-    const matchTagsDom = matchTags.map((tag, index)=>{
-        return <span key={index}>{tag}</span>;
-    })
-    return (
-        <div>
-            <Containerstyle />
-            <p className={'container'}>
-                <Intro>
-                    {content}
-                    <div className={'from'} >
-                        ------{author} {dynasty} {title}
-                        <span className={collect ? 'collected' : 'collect'}><img src={collectedIcon} /></span>
-                    </div>
-                    {matchTagsDom}
-                </Intro>
-                <ChangeButton>
-                    <a className={'changeButton'} onClick={changeJrShici}>随机诗词</a>
-                </ChangeButton>
-            </p>
-        </div>
-    )
+function Jrsc({ jrshiciData, changeJrShici }) {
+	const { content, matchTags, origin, collect } = jrshiciData;
+	const { title, dynasty, author } = origin;
+	const matchTagsDom = matchTags.map((tag, index) => {
+		return <Tag key={index}>{tag}</Tag>;
+	})
+	return (
+		<div>
+			<Containerstyle />
+			<p className={'container'}>
+				<Intro>
+					{content}
+					<div className={'from'} >
+						------{author} {dynasty} {title}
+						<span className={collect ? 'collected' : 'collect'}><img src={collectedIcon} /></span>
+					</div>
+					{matchTagsDom}
+				</Intro>
+				<ChangeButton>
+					<a className={'changeButton'} onClick={changeJrShici}>随机诗词</a>
+				</ChangeButton>
+			</p>
+		</div>
+	)
 }
 
 export default Jrsc
