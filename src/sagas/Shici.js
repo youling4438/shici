@@ -7,7 +7,12 @@ function getShici() {
 }
 
 export function* changeShici() {
-    const defaultShici = '纵使晴明无雨色，入云深处亦沾衣'
+    const defaultShici = {
+        'content': '山黛远，月波长，暮云秋影蘸潇湘。',
+        'origin': '鹧鸪天·赏荷',
+        'author': '蔡松年',
+        'category': '古诗文-四季-秋天'
+    };
     try {
         const data = yield call(getShici);
         const shiciData = JSON.parse(data);

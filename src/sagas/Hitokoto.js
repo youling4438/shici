@@ -7,13 +7,20 @@ function gethitokoto() {
 }
 
 export function* changeHitokoto() {
-    const defaultShici = '纵使晴明无雨色，入云深处亦沾衣'
+    const defaultHitokoto = {
+        'id': 234,
+        'hitokoto': '没有谁能够永远坚强下去的，每个人都会有疲累的无法站起的时候。世间的故事，就是为了这一刻而存在的哦。',
+        'type': 'a',
+        'from': '文学少女',
+        'creator': '酱七',
+        'created_at': '1468605914'
+    };
     try {
         const data = yield call(gethitokoto);
         const hitokotoData = JSON.parse(data);
         yield put({ type: CHANGE_HITOKOTO_RESP, hitokotoData });
     } catch (error) {
-        yield put({ type: CHANGE_HITOKOTO_RESP, defaultShici });
+        yield put({ type: CHANGE_HITOKOTO_RESP, defaultHitokoto });
     }
 }
 
