@@ -27,7 +27,6 @@ export default function shici(state = intlState, action) {
             shiciData['collect'] = false;
             shiciData['orderNumber'] = allShiciList.length;
             allShiciList.push(shiciData);
-            console.table(allShiciList);
             return {
                 ...state,
                 shiciData,
@@ -38,7 +37,6 @@ export default function shici(state = intlState, action) {
             const { allShiciList: allList, shiciData: shici } = state;
             shici.collect = !shici.collect;
             allList[shiciIndex] = shici;
-            console.table(allList);
             return {
                 ...state,
                 shiciData: shici,

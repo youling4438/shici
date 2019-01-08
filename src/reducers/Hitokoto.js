@@ -29,7 +29,6 @@ export default function hitokoto(state = intlState, action) {
             hitokotoData['collect'] = false;
             hitokotoData['orderNumber'] = allHitokotoList.length;
             allHitokotoList.push(hitokotoData);
-            console.table(allHitokotoList);
             return {
                 ...state,
                 hitokotoData,
@@ -40,7 +39,6 @@ export default function hitokoto(state = intlState, action) {
             const { allHitokotoList: allHitoList, hitokotoData: hitokoto } = state;
             hitokoto.collect = !hitokoto.collect;
             allHitoList[hitoIndex] = hitokoto;
-            console.table(allHitoList);
             return {
                 ...state,
                 hitokotoData: hitokoto,
