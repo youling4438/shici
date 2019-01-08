@@ -1,5 +1,3 @@
-/* eslint-disable no-constant-condition */
-
 import { all } from 'redux-saga/effects'
 import shici from './Shici'
 import Hitokoto from './Hitokoto'
