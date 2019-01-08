@@ -1,18 +1,17 @@
 import { createGlobalStyle } from 'styled-components'
 
-/* eslint no-unused-expressions: 0 */
 export const Globalstyle = createGlobalStyle`
-  html,
-  body {
-    height: 100%;
-    width: 100%;
-  }
+	html,
+	body {
+		height: 100%;
+		width: 100%;
+	}
 
-  body {
-    margin: 0;
-    padding: 0;
-    font-family: sans-serif;
-  }
+	body {
+		margin: 0;
+		padding: 0;
+		font-family: sans-serif;
+	}
 `
 export const Containerstyle = createGlobalStyle`
     .container{
@@ -22,18 +21,18 @@ export const Containerstyle = createGlobalStyle`
 `
 export const Buttonstyle = createGlobalStyle`
     .button{
-      display: inline-block;
-      cursor: pointer;
-      padding: 10px 15px;
-      margin-left: 15px;
-      margin-right: 15px;
-      border: 1px solid currentColor;
-      border-radius: 2px;
+		display: inline-block;
+		cursor: pointer;
+		padding: 10px 15px;
+		margin-left: 15px;
+		margin-right: 15px;
+		border: 1px solid currentColor;
+		border-radius: 2px;
     }
     .button:hover{
-      color: #5c9291
+      	color: #5c9291
     }
     .button:active{
-      color: #43676b
+      	color: #43676b
     }
 `
