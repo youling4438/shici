@@ -21,7 +21,7 @@ const Tag = styled.span`
 	}
 `
 
-function Jrsc({ jrshiciData, changeJrShici, collectJrShici }) {
+function Jrsc({ jrshiciData, changeJrShici, collectJrShici, showPrevButton, showNextButton, prevJrShici, nextJrShici }) {
 	const { content, matchTags, origin, collect, orderNumber } = jrshiciData;
 	const { title, dynasty, author } = origin;
 	const matchTagsDom = matchTags.map((tag, index) => {
@@ -29,7 +29,13 @@ function Jrsc({ jrshiciData, changeJrShici, collectJrShici }) {
 	})
 	const collectJrShiciHandle = () => {
 		collectJrShici(orderNumber)
-	}
+    }
+    const prevJrShiciHandle = () => {
+        prevJrShici(orderNumber - 1);
+    }
+    const nextJrShiciHandle = () => {
+        nextJrShici(orderNumber + 1);
+    }
 	return (
 		<div>
 			<Containerstyle />
@@ -43,7 +49,9 @@ function Jrsc({ jrshiciData, changeJrShici, collectJrShici }) {
 					<TagContainer>{matchTagsDom}</TagContainer>
 				</Intro>
 				<ChangeButton>
+                    {showPrevButton && <a className={'changeButton'} onClick={prevJrShiciHandle}>上一句诗词</a>}
 					<a className={'changeButton'} onClick={changeJrShici}>随机诗词</a>
+                    {showNextButton && <a className={'changeButton'} onClick={nextJrShiciHandle}>下一句诗词</a>}
 				</ChangeButton>
 			</p>
 		</div>

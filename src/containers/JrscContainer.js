@@ -9,8 +9,8 @@ class JrscContainer extends React.Component {
         super(props);
         this.changeJrShici = this.changeJrShici.bind(this)
         this.collectJrShici = this.collectJrShici.bind(this)
-        this.prevShici = this.prevShici.bind(this)
-        this.nextShici = this.nextShici.bind(this)
+        this.prevJrShici = this.prevJrShici.bind(this)
+        this.nextJrShici = this.nextJrShici.bind(this)
     }
     changeJrShici() {
         this.props.changeJrShici()
@@ -18,19 +18,24 @@ class JrscContainer extends React.Component {
     collectJrShici(index) {
         this.props.collectJrShici(index)
     }
-    prevShici(index) {
-        this.props.prevShici(index)
+    prevJrShici(index) {
+        this.props.prevJrShici(index)
     }
-    nextShici(index) {
-        this.props.nextShici(index)
+    nextJrShici(index) {
+        this.props.nextJrShici(index)
     }
     render() {
-        const { jrshiciData } = this.props;
+        const { jrshiciData, allJrShiciList } = this.props;
+        const { orderNumber } = jrshiciData;
         return (
             <Jrsc
                 jrshiciData={jrshiciData}
                 changeJrShici={this.changeJrShici}
                 collectJrShici={this.collectJrShici}
+                showPrevButton={orderNumber > 0}
+                showNextButton={orderNumber < allJrShiciList.length - 1}
+                prevJrShici={this.prevJrShici}
+                nextJrShici={this.nextJrShici}
             />
         )
     }
