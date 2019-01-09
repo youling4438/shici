@@ -27,7 +27,7 @@ export function* changeJrShici() {
         const { data: jrshiciData } = JSON.parse(data);
         yield put({ type: CHANGE_JR_SHICI_RESP, jrshiciData });
     } catch (error) {
-        yield put({ type: CHANGE_JR_SHICI_RESP, defaultJrShici });
+        yield put({ type: CHANGE_JR_SHICI_RESP, jrshiciData: defaultJrShici });
     }
 }
 

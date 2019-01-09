@@ -20,7 +20,7 @@ export function* changeHitokoto() {
         const hitokotoData = JSON.parse(data);
         yield put({ type: CHANGE_HITOKOTO_RESP, hitokotoData });
     } catch (error) {
-        yield put({ type: CHANGE_HITOKOTO_RESP, defaultHitokoto });
+        yield put({ type: CHANGE_HITOKOTO_RESP, hitokotoData: defaultHitokoto });
     }
 }
 
