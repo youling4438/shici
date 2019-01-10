@@ -30,6 +30,7 @@ class JrscContainer extends React.Component {
         return (
             <Jrsc
                 jrshiciData={jrshiciData}
+                allJrShiciList={allJrShiciList}
                 changeJrShici={this.changeJrShici}
                 collectJrShici={this.collectJrShici}
                 showPrevButton={orderNumber > 0}
