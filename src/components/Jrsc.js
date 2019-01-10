@@ -20,13 +20,39 @@ const Tag = styled.span`
 		background: #5c9291;
 	}
 `
+const CollectList = styled.ul`
+    text-align: left;
+    font-size: 14px;
+    font-family: "Open Sans", "Helvetica Neue", Helvetica, Arial, sans-serif;
+    margin: 5px 10px;
+    span.title {
+        font-size: 40px;
+    }
+    li {
+        margin: 5px 10px;
+        color: #fff;
+        padding: 10px;
+        background: #5c9291;
+        border-radius: 3px;
+        border: 1px solid #5c9291;
+    }
 
-function Jrsc({ jrshiciData, changeJrShici, collectJrShici, showPrevButton, showNextButton, prevJrShici, nextJrShici }) {
+    li:hover{
+       color: #5c9291;
+       background: #fff;
+    }
+
+    li span {
+        float: right;
+    }
+`
+
+function Jrsc({ jrshiciData, allJrShiciList, changeJrShici, collectJrShici, showPrevButton, showNextButton, prevJrShici, nextJrShici }) {
 	const { content, matchTags, origin, collect, orderNumber } = jrshiciData;
 	const { title, dynasty, author } = origin;
 	const matchTagsDom = matchTags.map((tag, index) => {
 		return <Tag key={index}>{tag}</Tag>;
-	})
+    })
 	const collectJrShiciHandle = () => {
 		collectJrShici(orderNumber)
     }
@@ -36,6 +62,10 @@ function Jrsc({ jrshiciData, changeJrShici, collectJrShici, showPrevButton, show
     const nextJrShiciHandle = () => {
         nextJrShici(orderNumber + 1);
     }
+    const collectDom = allJrShiciList.filter((item) => item.collect).map((item, index)=>{
+        const { content, origin: { author } } = item;
+        return <li key={index}>{content} <span>-------{author}</span></li>;
+    });
 	return (
 		<div>
 			<Containerstyle />
@@ -53,6 +83,10 @@ function Jrsc({ jrshiciData, changeJrShici, collectJrShici, showPrevButton, show
 					<a className={'changeButton'} onClick={changeJrShici}>随机诗词</a>
                     {showNextButton && <a className={'changeButton'} onClick={nextJrShiciHandle}>下一句诗词</a>}
 				</ChangeButton>
+                <CollectList>
+                    <span className={'title'}>我的收藏：</span>
+                    {collectDom}
+                </CollectList>
 			</p>
 		</div>
 	)
