@@ -1,9 +1,9 @@
 import * as React from 'react'
-import { Intro, ChangeButton } from './common'
+import { Intro, ChangeButton, CollectList } from './common'
 import { Containerstyle } from '../styles/global-styles'
 import collectedIcon from '../assets/collected.svg'
 
-const Hitokoto = ({ hitokotoData, showPrevButton, showNextButton, changeHitokoto, collectHitokoto, prevHitokoto, nextHitokoto }) => {
+const Hitokoto = ({ hitokotoData, allHitokotoList, showPrevButton, showNextButton, changeHitokoto, collectHitokoto, prevHitokoto, nextHitokoto }) => {
     const { hitokoto, from, creator, id, created_at, type, collect, orderNumber } = hitokotoData;
     const collectHitokotoHandle = () => {
         collectHitokoto(orderNumber);
@@ -14,6 +14,10 @@ const Hitokoto = ({ hitokotoData, showPrevButton, showNextButton, changeHitokoto
     const nextHitokotoHandle = () => {
         nextHitokoto(orderNumber + 1);
     }
+    const collectDom = allHitokotoList.filter((item) => item.collect).map((item, index) => {
+        const { hitokoto, from } = item;
+        return <li key={index}>{hitokoto} <span>-------{from}</span></li>;
+    });
     return (
         <div>
             <Containerstyle />
@@ -29,6 +33,10 @@ const Hitokoto = ({ hitokotoData, showPrevButton, showNextButton, changeHitokoto
                     <a className={'changeButton'} onClick={changeHitokoto}>随机一言</a>
                     {showNextButton && <a className={'changeButton'} onClick={nextHitokotoHandle}>下一条一言</a>}
                 </ChangeButton>
+                <CollectList>
+                    <span className={'title'}>我的收藏：</span>
+                    {collectDom}
+                </CollectList>
             </p>
         </div>
     );

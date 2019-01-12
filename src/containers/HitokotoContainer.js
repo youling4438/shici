@@ -30,6 +30,7 @@ class HitokotoContainer extends React.Component {
         return (
             <Hitokoto
                 hitokotoData={hitokotoData}
+                allHitokotoList={allHitokotoList}
                 showPrevButton={orderNumber > 0}
                 showNextButton={orderNumber < allHitokotoList.length - 1}
                 changeHitokoto={this.changeHitokoto}
