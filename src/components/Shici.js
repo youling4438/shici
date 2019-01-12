@@ -1,9 +1,9 @@
 import * as React from 'react'
-import { Intro, ChangeButton } from './common'
+import { Intro, ChangeButton, CollectList } from './common'
 import { Containerstyle } from '../styles/global-styles'
 import collectedIcon from '../assets/collected.svg'
 
-const Shici = ({ shiciData, showPrevButton, showNextButton, changeShici, collectShici, prevShici, nextShici }) => {
+const Shici = ({ shiciData, allShiciList, showPrevButton, showNextButton, changeShici, collectShici, prevShici, nextShici }) => {
     const { content, author, origin, category, collect, orderNumber } = shiciData;
     const collectShiciHandle = () => {
         collectShici(orderNumber);
@@ -14,6 +14,10 @@ const Shici = ({ shiciData, showPrevButton, showNextButton, changeShici, collect
     const nextShiciHandle = () => {
         nextShici(orderNumber + 1);
     }
+    const collectDom = allShiciList.filter((item) => item.collect).map((item, index) => {
+        const { content, author } = item;
+        return <li key={index}>{content} <span>-------{author}</span></li>;
+    });
     return (
         <div>
             <Containerstyle />
@@ -30,6 +34,10 @@ const Shici = ({ shiciData, showPrevButton, showNextButton, changeShici, collect
                     <a className={'changeButton'} onClick={changeShici}>随机诗词</a>
                     {showNextButton && <a className={'changeButton'} onClick={nextShiciHandle}>下一句诗词</a>}
                 </ChangeButton>
+                <CollectList>
+                    <span className={'title'}>我的收藏：</span>
+                    {collectDom}
+                </CollectList>
             </p>
         </div>
     );

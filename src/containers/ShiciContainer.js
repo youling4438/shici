@@ -30,6 +30,7 @@ class ShiciContainer extends React.Component {
         return (
             <Shici
                 shiciData={shiciData}
+                allShiciList={allShiciList}
                 showPrevButton={orderNumber > 0}
                 showNextButton={orderNumber < allShiciList.length - 1}
                 changeShici={this.changeShici}
