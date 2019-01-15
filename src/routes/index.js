@@ -1,8 +1,8 @@
 import React from 'react'
 import { Router, Route } from 'react-router-dom'
 import history from '../history';
-import { ShiciContainer, PageNavContainer, HitokotoContainer, JrscContainer } from '../containers'
-import { Header, ItemDetail } from '../components/'
+import { ShiciContainer, PageNavContainer, HitokotoContainer, JrscContainer, ItemDetailContainer } from '../containers'
+import { Header } from '../components/'
 
 function Routes() {
     return (
@@ -12,7 +12,7 @@ function Routes() {
                 <Route path="/shici" component={ShiciContainer} />
                 <Route path="/jrsc" component={JrscContainer} />
                 <Route path="/hitokoto" component={HitokotoContainer} />
-                <Route path="/detail" component={ItemDetail} />
+                <Route path="/detail" component={ItemDetailContainer} />
                 <PageNavContainer />
             </div>
         </Router>
