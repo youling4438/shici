@@ -24,7 +24,7 @@ export const nextJrShici = (index) => ({
     index
 })
 
-export const jrShiciDetail = (jrshici) => ({
+export const jrShiciDetail = (item) => ({
     'type': JR_SHICI_DETAIL,
-    jrshici
+    item
 })
