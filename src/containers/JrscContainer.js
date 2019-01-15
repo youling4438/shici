@@ -11,6 +11,7 @@ class JrscContainer extends React.Component {
         this.collectJrShici = this.collectJrShici.bind(this)
         this.prevJrShici = this.prevJrShici.bind(this)
         this.nextJrShici = this.nextJrShici.bind(this)
+        this.jrShiciDetail = this.jrShiciDetail.bind(this)
     }
     changeJrShici() {
         this.props.changeJrShici()
@@ -23,6 +24,10 @@ class JrscContainer extends React.Component {
     }
     nextJrShici(index) {
         this.props.nextJrShici(index)
+    }
+    jrShiciDetail(jrshici) {
+        console.log(jrshici);
+        this.props.jrShiciDetail(jrshici)
     }
     render() {
         const { jrshiciData, allJrShiciList } = this.props;
@@ -37,6 +42,7 @@ class JrscContainer extends React.Component {
                 showNextButton={orderNumber < allJrShiciList.length - 1}
                 prevJrShici={this.prevJrShici}
                 nextJrShici={this.nextJrShici}
+                jrShiciDetail={this.jrShiciDetail}
             />
         )
     }

@@ -21,25 +21,28 @@ const Tag = styled.span`
 	}
 `
 
-function Jrsc({ jrshiciData, allJrShiciList, changeJrShici, collectJrShici, showPrevButton, showNextButton, prevJrShici, nextJrShici }) {
+function Jrsc({ jrshiciData, allJrShiciList, changeJrShici, collectJrShici, showPrevButton, showNextButton, prevJrShici, nextJrShici, jrShiciDetail }) {
 	const { content, matchTags, origin, collect, orderNumber } = jrshiciData;
 	const { title, dynasty, author } = origin;
 	const matchTagsDom = matchTags.map((tag, index) => {
 		return <Tag key={index}>{tag}</Tag>;
-    })
+	})
 	const collectJrShiciHandle = () => {
 		collectJrShici(orderNumber)
-    }
-    const prevJrShiciHandle = () => {
-        prevJrShici(orderNumber - 1);
-    }
-    const nextJrShiciHandle = () => {
-        nextJrShici(orderNumber + 1);
-    }
-    const collectDom = allJrShiciList.filter((item) => item.collect).map((item, index)=>{
-        const { content, origin: { author } } = item;
-        return <li key={index}>{content} <span>-------{author}</span></li>;
-    });
+	}
+	const prevJrShiciHandle = () => {
+		prevJrShici(orderNumber - 1);
+	}
+	const nextJrShiciHandle = () => {
+		nextJrShici(orderNumber + 1);
+	}
+	const collectDom = allJrShiciList.filter((item) => item.collect).map((item, index) => {
+		const { content, origin: { author } } = item;
+		const clickJrShiciDetailHandle = () => {
+			jrShiciDetail(item);
+		}
+		return <li key={index} onClick={clickJrShiciDetailHandle} >{content} <span>-------{author}</span></li>;
+	});
 	return (
 		<div>
 			<Containerstyle />
@@ -53,14 +56,14 @@ function Jrsc({ jrshiciData, allJrShiciList, changeJrShici, collectJrShici, show
 					<TagContainer>{matchTagsDom}</TagContainer>
 				</Intro>
 				<ChangeButton>
-                    {showPrevButton && <a className={'changeButton'} onClick={prevJrShiciHandle}>上一句诗词</a>}
+					{showPrevButton && <a className={'changeButton'} onClick={prevJrShiciHandle}>上一句诗词</a>}
 					<a className={'changeButton'} onClick={changeJrShici}>随机诗词</a>
-                    {showNextButton && <a className={'changeButton'} onClick={nextJrShiciHandle}>下一句诗词</a>}
+					{showNextButton && <a className={'changeButton'} onClick={nextJrShiciHandle}>下一句诗词</a>}
 				</ChangeButton>
-                <CollectList>
-                    <span className={'title'}>我的收藏：</span>
-                    {collectDom}
-                </CollectList>
+				<CollectList>
+					<span className={'title'}>我的收藏：</span>
+					{collectDom}
+				</CollectList>
 			</p>
 		</div>
 	)
