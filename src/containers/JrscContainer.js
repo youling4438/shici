@@ -3,6 +3,7 @@ import { Jrsc } from '../components'
 import { bindActionCreators } from 'redux'
 import { connect } from 'react-redux'
 import * as jrscAction from '../actions/Jrsc'
+import { showDetail } from '../lib/RouterHeaple'
 
 class JrscContainer extends React.Component {
     constructor(props) {
@@ -28,6 +29,7 @@ class JrscContainer extends React.Component {
     jrShiciDetail(jrshici) {
         console.log(jrshici);
         this.props.jrShiciDetail(jrshici)
+        showDetail('detail');
     }
     render() {
         const { jrshiciData, allJrShiciList } = this.props;
