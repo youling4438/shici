@@ -1,8 +1,8 @@
 import * as React from 'react'
 import { Containerstyle } from '../styles/global-styles'
 
-const ItemDetail = ({ ItemDetail }) => {
-    const { origin: content } = ItemDetail;
+const ItemDetail = ({ itemDetail }) => {
+    const { origin: { content } } = itemDetail;
     const contentList = content.map(item => (<h3>{item}</h3>))
     return (
         <div>
