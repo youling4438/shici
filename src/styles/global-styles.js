@@ -1,6 +1,12 @@
 import { createGlobalStyle } from 'styled-components'
 
 export const Globalstyle = createGlobalStyle`
+    @font-face {
+        /* font-test*/
+        font-family: huawenxingkai;
+        src:url('../assets/font/fzxk.TTF');
+    }
+
 	html,
 	body {
 		height: 100%;
