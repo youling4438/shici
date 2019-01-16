@@ -27,7 +27,6 @@ class JrscContainer extends React.Component {
         this.props.nextJrShici(index)
     }
     jrShiciDetail(jrshici) {
-        console.log(jrshici);
         this.props.jrShiciDetail(jrshici)
         showDetail('detail');
     }
