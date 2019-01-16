@@ -3,13 +3,18 @@ import styled from 'styled-components'
 import { Containerstyle } from '../styles/global-styles'
 
 const Title = styled.div`
-	font-family: cursive;
+    font-family: cursive;
+    font-size: 25px;
+    margin-top: 20px;
+    margin-bottom: 20px;
 `
 const Author = styled.div`
-	font-family: cursive;
+    font-family: cursive;
+    font-size: 16px;
 `
 const Content = styled.div`
-	font-family: cursive;
+    font-family: cursive;
+    font-size: 20px;
 `
 
 const ItemDetail = ({ itemDetail }) => {
