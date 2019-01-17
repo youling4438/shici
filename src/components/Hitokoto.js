@@ -33,10 +33,10 @@ const Hitokoto = ({ hitokotoData, allHitokotoList, showPrevButton, showNextButto
                     <a className={'changeButton'} onClick={changeHitokoto}>随机一言</a>
                     {showNextButton && <a className={'changeButton'} onClick={nextHitokotoHandle}>下一条一言</a>}
                 </ChangeButton>
-                <CollectList>
+                {collectDom.length > 0 && <CollectList>
                     <span className={'title'}>我的收藏：</span>
                     {collectDom}
-                </CollectList>
+                </CollectList>}
             </p>
         </div>
     );

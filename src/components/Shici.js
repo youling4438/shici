@@ -34,10 +34,10 @@ const Shici = ({ shiciData, allShiciList, showPrevButton, showNextButton, change
                     <a className={'changeButton'} onClick={changeShici}>随机诗词</a>
                     {showNextButton && <a className={'changeButton'} onClick={nextShiciHandle}>下一句诗词</a>}
                 </ChangeButton>
-                <CollectList>
+                {collectDom.length > 0 && <CollectList>
                     <span className={'title'}>我的收藏：</span>
                     {collectDom}
-                </CollectList>
+                </CollectList>}
             </p>
         </div>
     );

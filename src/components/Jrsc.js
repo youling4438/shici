@@ -60,10 +60,10 @@ function Jrsc({ jrshiciData, allJrShiciList, changeJrShici, collectJrShici, show
 					<a className={'changeButton'} onClick={changeJrShici}>随机诗词</a>
 					{showNextButton && <a className={'changeButton'} onClick={nextJrShiciHandle}>下一句诗词</a>}
 				</ChangeButton>
-				<CollectList>
+				{collectDom.length > 0 && <CollectList>
 					<span className={'title'}>我的收藏：</span>
 					{collectDom}
-				</CollectList>
+				</CollectList>}
 			</p>
 		</div>
 	)
