@@ -41,7 +41,7 @@ function Jrsc({ jrshiciData, allJrShiciList, changeJrShici, collectJrShici, show
 		const clickJrShiciDetailHandle = () => {
 			jrShiciDetail(item);
 		}
-		return <li key={index} onClick={clickJrShiciDetailHandle} >{content} <span>-------{author}</span></li>;
+		return <li key={index} onClick={clickJrShiciDetailHandle} className={'itemDetail'}>{content} <span>-------{author}</span></li>;
 	});
 	return (
 		<div>

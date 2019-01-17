@@ -8,6 +8,9 @@ export const CollectList = styled.ul`
     span.title {
         font-size: 40px;
     }
+    li.itemDetail {
+        cursor: pointer;
+    }
     li {
         margin: 5px 10px;
         color: #fff;
