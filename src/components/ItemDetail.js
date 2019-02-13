@@ -1,6 +1,7 @@
 import * as React from 'react'
 import styled from 'styled-components'
 import { Containerstyle } from '../styles/global-styles'
+import { ChangeButton } from './common'
 
 const Title = styled.div`
     font-family: cursive;
@@ -17,11 +18,19 @@ const Content = styled.div`
     font-size: 20px;
 `
 
-const ItemDetail = ({ itemDetail }) => {
+const ItemDetail = ({ itemDetail, index, allCollectList, jrShiciDetail }) => {
     const { origin: { content, author, dynasty, title, translate } } = itemDetail;
-    const contentList = content.map(item => (<h3>{item}</h3>))
+    const contentList = content.map(item => (<h3>{item}</h3>));
     const showTranslate = translate !== null;
-    const translateList = showTranslate && translate.map(item => (<h5>{item}</h5>))
+    const translateList = showTranslate && translate.map(item => (<h5>{item}</h5>));
+    const showPrevButton = index > 0;
+    const showNextButton = index < allCollectList.length - 1;
+    const prevJrShiciHandle = () => {
+        jrShiciDetail(allCollectList[index - 1]);
+    };
+    const nextJrShiciHandle = () => {
+        jrShiciDetail(allCollectList[index + 1]);
+    };
     return (
         <div>
             <Containerstyle />
@@ -36,6 +45,10 @@ const ItemDetail = ({ itemDetail }) => {
                     translateList
                 }
             </p>
+            <ChangeButton>
+                {showPrevButton && <a className={'changeButton'} onClick={prevJrShiciHandle}>上一句诗词</a>}
+                {showNextButton && <a className={'changeButton'} onClick={nextJrShiciHandle}>下一句诗词</a>}
+            </ChangeButton>
         </div>
     );
 }
