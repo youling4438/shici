@@ -6,6 +6,7 @@ export const NEXT_JR_SHICI = "NEXT_JR_SHICI";
 export const JR_SHICI_DETAIL = "JR_SHICI_DETAIL";
 export const INSERT_JR_SHICI = "INSERT_JR_SHICI";
 export const FETCH_JR_SHICI = "FETCH_JR_SHICI";
+export const FETCH_JR_SHICI_RESP = "FETCH_JR_SHICI_RESP";
 
 export const changeJrShici = () => ({
     type: CHANGE_JR_SHICI

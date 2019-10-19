@@ -3,7 +3,8 @@ import {
     CHANGE_JR_SHICI_RESP,
     CHANGE_JR_SHICI,
     INSERT_JR_SHICI,
-    FETCH_JR_SHICI
+    FETCH_JR_SHICI,
+    FETCH_JR_SHICI_RESP
 } from "../actions/Jrsc";
 import jrshiciApi from "../services/jrshici";
 
@@ -84,9 +85,15 @@ export function* fetchJrShici(filter) {
     try {
         console.log("filter", filter);
         const data = yield call(findJrShici, filter.filter);
-        // const { data: jrshiciData } = JSON.parse(data);
-        // yield put({ type: CHANGE_JR_SHICI_RESP, jrshiciData });
-        console.log("data", data);
+        const allJrShiciList = JSON.parse(data).map(e => {
+            e.shici.collect = true;
+            return e.shici;
+        });
+        yield put({
+            type: FETCH_JR_SHICI_RESP,
+            allJrShiciList
+        });
+        console.log("data", allJrShiciList);
     } catch (error) {
         console.log("error: ", error);
     }
