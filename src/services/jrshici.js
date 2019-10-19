@@ -10,5 +10,11 @@ export default {
             shici
         )}`;
         return callFn({ url });
+    },
+    find(filter) {
+        const url = `http://localhost:3001/shicis/find?body=${JSON.stringify(
+            filter
+        )}`;
+        return callFn({ url });
     }
 };

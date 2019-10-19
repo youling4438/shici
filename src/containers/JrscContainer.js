@@ -34,6 +34,9 @@ class JrscContainer extends React.Component {
         this.props.jrShiciDetail(jrshici);
         showDetail("detail");
     }
+    componentDidMount() {
+        this.props.fetchJrShici({ type: "INSERT_JR_SHICI" });
+    }
     render() {
         const { jrshiciData, allJrShiciList } = this.props;
         const { orderNumber } = jrshiciData;

@@ -4,7 +4,8 @@ export const COLLECT_JR_SHICI = "COLLECT_JR_SHICI";
 export const PREV_JR_SHICI = "PREV_JR_SHICI";
 export const NEXT_JR_SHICI = "NEXT_JR_SHICI";
 export const JR_SHICI_DETAIL = "JR_SHICI_DETAIL";
-export const INSERT_SHICI = "INSERT_SHICI";
+export const INSERT_JR_SHICI = "INSERT_JR_SHICI";
+export const FETCH_JR_SHICI = "FETCH_JR_SHICI";
 
 export const changeJrShici = () => ({
     type: CHANGE_JR_SHICI
@@ -16,8 +17,13 @@ export const collectJrShici = index => ({
 });
 
 export const insertShici = shici => ({
-    type: INSERT_SHICI,
+    type: INSERT_JR_SHICI,
     shici
+});
+
+export const fetchJrShici = filter => ({
+    type: FETCH_JR_SHICI,
+    filter
 });
 
 export const prevJrShici = index => ({

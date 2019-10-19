@@ -2,7 +2,8 @@ import { put, takeEvery, call } from "redux-saga/effects";
 import {
     CHANGE_JR_SHICI_RESP,
     CHANGE_JR_SHICI,
-    INSERT_SHICI
+    INSERT_JR_SHICI,
+    FETCH_JR_SHICI
 } from "../actions/Jrsc";
 import jrshiciApi from "../services/jrshici";
 
@@ -12,6 +13,10 @@ function getJrShici() {
 
 function addJrShici(shici) {
     return jrshiciApi.insert(shici).then(resp => resp);
+}
+
+function findJrShici(filter) {
+    return jrshiciApi.find(filter).then(resp => resp);
 }
 
 export function* changeJrShici() {
@@ -75,7 +80,20 @@ export function* insertJrShici(shici) {
     }
 }
 
+export function* fetchJrShici(filter) {
+    try {
+        console.log("filter", filter);
+        const data = yield call(findJrShici, filter.filter);
+        // const { data: jrshiciData } = JSON.parse(data);
+        // yield put({ type: CHANGE_JR_SHICI_RESP, jrshiciData });
+        console.log("data", data);
+    } catch (error) {
+        console.log("error: ", error);
+    }
+}
+
 export default function* rootSaga() {
     yield takeEvery(CHANGE_JR_SHICI, changeJrShici);
-    yield takeEvery(INSERT_SHICI, insertJrShici);
+    yield takeEvery(INSERT_JR_SHICI, insertJrShici);
+    yield takeEvery(FETCH_JR_SHICI, fetchJrShici);
 }
