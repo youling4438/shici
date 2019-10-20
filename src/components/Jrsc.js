@@ -3,6 +3,7 @@ import styled from "styled-components";
 import { Intro, ChangeButton, CollectList } from "./common";
 import { Containerstyle } from "../styles/global-styles";
 import collectedIcon from "../assets/collected.svg";
+import deletedIcon from "../assets/delete_hover.svg";
 
 const TagContainer = styled.p`
     text-align: center;
@@ -31,7 +32,8 @@ function Jrsc({
     showNextButton,
     prevJrShici,
     nextJrShici,
-    jrShiciDetail
+    jrShiciDetail,
+    jsShiciDelete
 }) {
     const { content, matchTags, origin, collect, orderNumber } = jrshiciData;
     const { title, dynasty, author } = origin;
@@ -39,7 +41,6 @@ function Jrsc({
         return <Tag key={index}>{tag}</Tag>;
     });
     const collectJrShiciHandle = () => {
-        console.log("jrshiciData", jrshiciData);
         insertShici(jrshiciData);
         collectJrShici(orderNumber);
     };
@@ -59,13 +60,31 @@ function Jrsc({
             const clickJrShiciDetailHandle = () => {
                 jrShiciDetail(item);
             };
+            const deleteShiciItemHandle = () => {
+                console.log("item._id", item._id);
+                jsShiciDelete(item, index);
+            };
             return (
                 <li
                     key={index}
                     onClick={clickJrShiciDetailHandle}
                     className={"itemDetail"}
                 >
-                    {content} <span>-------{author}</span>
+                    {content}
+                    <span>
+                        -------{author}
+                        <img
+                            src={deletedIcon}
+                            onClick={e => {
+                                // 阻止事件冒泡
+                                e.stopPropagation();
+                                e.nativeEvent.stopImmediatePropagation();
+                                console.log("delete shici:", index);
+                                deleteShiciItemHandle();
+                                // return false;
+                            }}
+                        />
+                    </span>
                 </li>
             );
         });

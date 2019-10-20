@@ -1,4 +1,4 @@
-import styled from 'styled-components'
+import styled from "styled-components";
 
 export const CollectList = styled.ul`
     text-align: left;
@@ -10,6 +10,7 @@ export const CollectList = styled.ul`
     }
     li.itemDetail {
         cursor: pointer;
+        line-height: 1.78;
     }
     li {
         margin: 5px 10px;
@@ -20,12 +21,24 @@ export const CollectList = styled.ul`
         border: 1px solid #5c9291;
     }
 
-    li:hover{
-       color: #5c9291;
-       background: #fff;
+    li:hover {
+        color: #5c9291;
+        background: #fff;
     }
 
     li span {
         float: right;
     }
-`
+
+    li span img {
+        width: 25px;
+        padding: 0 5px;
+        color: #fff;
+        vertical-align: bottom;
+        filter: brightness(3);
+    }
+
+    li:hover span img {
+        filter: brightness(1);
+    }
+`;
