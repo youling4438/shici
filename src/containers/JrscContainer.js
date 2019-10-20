@@ -14,6 +14,7 @@ class JrscContainer extends React.Component {
         this.prevJrShici = this.prevJrShici.bind(this);
         this.nextJrShici = this.nextJrShici.bind(this);
         this.jrShiciDetail = this.jrShiciDetail.bind(this);
+        this.jsShiciDelete = this.jsShiciDelete.bind(this);
     }
     changeJrShici() {
         this.props.changeJrShici();

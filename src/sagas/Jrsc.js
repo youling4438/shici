@@ -4,7 +4,8 @@ import {
     CHANGE_JR_SHICI,
     INSERT_JR_SHICI,
     FETCH_JR_SHICI,
-    FETCH_JR_SHICI_RESP
+    FETCH_JR_SHICI_RESP,
+    DETELE_JR_SHICI
 } from "../actions/Jrsc";
 import jrshiciApi from "../services/jrshici";
 
@@ -105,8 +106,11 @@ export function* fetchJrShici(filter) {
 
 export function* deleteJrShici(item) {
     try {
-        console.log("item", item);
-        const data = yield call(delJrShici, { _id: item._id });
+        console.log("item", item.item);
+        // {"shici.id":{"$eq":"5b8b9572e116fb3714e7193f"}}
+        const data = yield call(delJrShici, {
+            "shici.id": { $eq: item.item.id }
+        });
         console.log("data", data);
     } catch (error) {
         console.log("error: ", error);
@@ -117,5 +121,5 @@ export default function* rootSaga() {
     yield takeEvery(CHANGE_JR_SHICI, changeJrShici);
     yield takeEvery(INSERT_JR_SHICI, insertJrShici);
     yield takeEvery(FETCH_JR_SHICI, fetchJrShici);
-    yield takeEvery(JR_SHICI_DETELE, deleteJrShici);
+    yield takeEvery(DETELE_JR_SHICI, deleteJrShici);
 }

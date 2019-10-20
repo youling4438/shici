@@ -61,7 +61,7 @@ function Jrsc({
                 jrShiciDetail(item);
             };
             const deleteShiciItemHandle = () => {
-                console.log("item._id", item._id);
+                console.log("item.id", item.id);
                 jsShiciDelete(item, index);
             };
             return (

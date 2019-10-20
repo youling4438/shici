@@ -7,7 +7,7 @@ export const JR_SHICI_DETAIL = "JR_SHICI_DETAIL";
 export const INSERT_JR_SHICI = "INSERT_JR_SHICI";
 export const FETCH_JR_SHICI = "FETCH_JR_SHICI";
 export const FETCH_JR_SHICI_RESP = "FETCH_JR_SHICI_RESP";
-export const JR_SHICI_DETELE = "JR_SHICI_DETELE";
+export const DETELE_JR_SHICI = "DETELE_JR_SHICI";
 
 export const changeJrShici = () => ({
     type: CHANGE_JR_SHICI
@@ -44,6 +44,6 @@ export const jrShiciDetail = item => ({
 });
 
 export const jsShiciDelete = item => ({
-    type: JR_SHICI_DETELE,
+    type: DETELE_JR_SHICI,
     item
 });

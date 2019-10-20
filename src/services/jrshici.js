@@ -21,6 +21,7 @@ export default {
         const url = `http://localhost:3001/shicis/delete?body=${JSON.stringify(
             delItem
         )}`;
+        console.log("url", url);
         return callFn({ url });
     }
 };
