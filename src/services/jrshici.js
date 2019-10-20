@@ -16,5 +16,11 @@ export default {
             filter
         )}`;
         return callFn({ url });
+    },
+    delete(delItem) {
+        const url = `http://localhost:3001/shicis/delete?body=${JSON.stringify(
+            delItem
+        )}`;
+        return callFn({ url });
     }
 };

@@ -20,6 +20,10 @@ function findJrShici(filter) {
     return jrshiciApi.find(filter).then(resp => resp);
 }
 
+function delJrShici(delItem) {
+    return jrshiciApi.delete(delItem).then(resp => resp);
+}
+
 export function* changeJrShici() {
     const defaultJrShici = {
         id: "5b8b9572e116fb3714e7089c",
@@ -99,8 +103,19 @@ export function* fetchJrShici(filter) {
     }
 }
 
+export function* deleteJrShici(item) {
+    try {
+        console.log("item", item);
+        const data = yield call(delJrShici, { _id: item._id });
+        console.log("data", data);
+    } catch (error) {
+        console.log("error: ", error);
+    }
+}
+
 export default function* rootSaga() {
     yield takeEvery(CHANGE_JR_SHICI, changeJrShici);
     yield takeEvery(INSERT_JR_SHICI, insertJrShici);
     yield takeEvery(FETCH_JR_SHICI, fetchJrShici);
+    yield takeEvery(JR_SHICI_DETELE, deleteJrShici);
 }

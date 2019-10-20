@@ -34,6 +34,10 @@ class JrscContainer extends React.Component {
         this.props.jrShiciDetail(jrshici);
         showDetail("detail");
     }
+    jsShiciDelete(item, index) {
+        this.props.jsShiciDelete(item);
+        this.props.collectJrShici(index);
+    }
     componentDidMount() {
         this.props.fetchJrShici({ type: "INSERT_JR_SHICI" });
     }
@@ -52,6 +56,7 @@ class JrscContainer extends React.Component {
                 prevJrShici={this.prevJrShici}
                 nextJrShici={this.nextJrShici}
                 jrShiciDetail={this.jrShiciDetail}
+                jsShiciDelete={this.jsShiciDelete}
             />
         );
     }
