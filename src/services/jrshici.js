@@ -6,10 +6,13 @@ export default {
         return callFn({ url, withCredentials });
     },
     insert(shici) {
-        const url = `http://localhost:3001/shicis/add?body=${JSON.stringify(
-            shici
-        )}`;
-        return callFn({ url });
+        const url = "http://localhost:3001/shicis/add";
+        return callFn({
+            url,
+            methond: "POST",
+            header: { "Content-Type": "application/json" },
+            params: shici.shici
+        });
     },
     find(filter) {
         const url = `http://localhost:3001/shicis/find?body=${JSON.stringify(
